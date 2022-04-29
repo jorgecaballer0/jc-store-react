@@ -14,7 +14,7 @@ export default function ItemDetailContainer() {
   useEffect(() => {
     setLoading(true);
     const db = getFirestore();
-    const detailRef = doc(db, "productos", id);
+    const detailRef = doc(db, "products", id);
     getDoc(detailRef)
       .then((res) => setCard({ id: res.id, ...res.data() }))
       .catch((error) => console.log(error))

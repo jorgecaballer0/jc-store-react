@@ -24,10 +24,10 @@ export default function ItemListContainer() {
     const db = getFirestore();
     let productosRef;
     if (!categoryId) {
-      productosRef = collection(db, "productos");
+      productosRef = collection(db, "products");
     } else {
       productosRef = query(
-        collection(db, "productos"),
+        collection(db, "products"),
         where("category", "==", categoryId)
       );
     }

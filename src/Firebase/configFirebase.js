@@ -1,8 +1,8 @@
 export const firebaseConfig = {
-    apiKey: "AIzaSyC5QDKgjd-pD-LsWrAy4NwZgfEfjwJewV4",
-    authDomain: "tienda-con-react.firebaseapp.com",
-    projectId: "tienda-con-react",
-    storageBucket: "tienda-con-react.appspot.com",
-    messagingSenderId: "452784706953",
-    appId: "1:452784706953:web:2e291aafaf4b8ac99abd58"
+    apiKey: "AIzaSyC5aziF6ONV_wL8zS7Mj-iujqnnITpr2Eg",
+    authDomain: "jc-store-react.firebaseapp.com",
+    projectId: "jc-store-react",
+    storageBucket: "jc-store-react.appspot.com",
+    messagingSenderId: "327447185278",
+    appId: "1:327447185278:web:d679b53701229fee61d52f"
 };
