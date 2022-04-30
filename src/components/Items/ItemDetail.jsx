@@ -17,7 +17,8 @@ export default function ItemDetail({ card }) {
 
   return (
     <>
-      <Container className="container-detail"
+      <Container
+        className="container-detail"
         sx={{
           display: "flex",
         }}

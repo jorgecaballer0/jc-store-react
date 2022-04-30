@@ -209,7 +209,9 @@ export default function Cart() {
               aria-describedby="alert-dialog-slide-description"
             >
               <DialogTitle>
-                {"Desea finalizar la compra y completar el formulario de envío?"}
+                {
+                  "Desea finalizar la compra y completar el formulario de envío?"
+                }
               </DialogTitle>
               <DialogActions>
                 <Button onClick={handleClose} color="error">
@@ -234,7 +236,12 @@ export default function Cart() {
             justifyContent: "center",
           }}
         >
-          <Typography className="MqText" gutterBottom variant="h2" color="white">
+          <Typography
+            className="MqText"
+            gutterBottom
+            variant="h2"
+            color="white"
+          >
             No hay productos en el carrito
           </Typography>
           <Link to="/">

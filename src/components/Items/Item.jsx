@@ -30,9 +30,15 @@ export default function Item({ id, title, image }) {
           flexWrap: "wrap",
         }}
       >
-        <CardMedia sx={{
-          maxHeight: 300,
-        }} key={id} component="img" image={image} alt={title} />
+        <CardMedia
+          sx={{
+            maxHeight: 300,
+          }}
+          key={id}
+          component="img"
+          image={image}
+          alt={title}
+        />
       </Container>
       <Container
         sx={{

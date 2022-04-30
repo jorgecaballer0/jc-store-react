@@ -23,7 +23,8 @@ function Copyright() {
 export default function StickyFooter() {
   return (
     <>
-      <Box className="footer-container"
+      <Box
+        className="footer-container"
         sx={{
           bgcolor: "rgba(0, 0, 0, 0.4)",
           p: 1,
