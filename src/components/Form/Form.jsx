@@ -35,7 +35,6 @@ export default function Formulario() {
         }}
         validate={(validation) => {
           let errors = {};
-
           // Validacion de Nombre
           if (!validation.name) {
             errors.name = "Por favor ingrese su nombre";
@@ -60,11 +59,10 @@ export default function Formulario() {
             errors.phone =
               "El teléfono debe contener 10 dígitos, sin espacios ni guiones";
           }
-
           return errors;
         }}
         onSubmit={(dataForm, { resetForm }) => {
-          // Setean datos para el envio a firebase
+          // Setear datos para el envio a firebase
           let buyer = {
             dataForm, // Datos del comprador
             cart, // Datos del carrito
