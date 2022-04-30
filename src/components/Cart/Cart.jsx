@@ -86,8 +86,9 @@ export default function Cart() {
                       <Tooltip
                         TransitionComponent={Fade}
                         TransitionProps={{ timeout: 350 }}
-                        title="Eliminar fila"
+                        title="Eliminar producto"
                         arrow
+                        placement="bottom-start"
                       >
                         <DeleteOutlineIcon
                           onClick={() => removeFromCart(item.id)}
