@@ -20,8 +20,6 @@ import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
 import { Link } from "react-router-dom";
 import DeleteOutlineIcon from "@mui/icons-material/DeleteOutline";
-import AddIcon from "@mui/icons-material/Add";
-import RemoveIcon from "@mui/icons-material/Remove";
 import Fade from "@mui/material/Fade";
 
 function priceFormat(num) {
@@ -87,7 +85,7 @@ export default function Cart() {
                     <TableCell>
                       <Tooltip
                         TransitionComponent={Fade}
-                        TransitionProps={{ timeout: 600 }}
+                        TransitionProps={{ timeout: 350 }}
                         title="Eliminar fila"
                         arrow
                       >
@@ -96,36 +94,10 @@ export default function Cart() {
                           fontSize="small"
                           sx={{
                             cursor: "pointer",
-                            mr: "4px",
-                          }}
-                        />
-                      </Tooltip>
-                      <Tooltip
-                        TransitionComponent={Fade}
-                        TransitionProps={{ timeout: 600 }}
-                        title="Eliminar producto"
-                        arrow
-                      >
-                        <RemoveIcon
-                          color="error"
-                          fontSize="small"
-                          sx={{
-                            cursor: "pointer",
-                            mr: "4px",
-                          }}
-                        />
-                      </Tooltip>
-                      <Tooltip
-                        TransitionComponent={Fade}
-                        TransitionProps={{ timeout: 600 }}
-                        title="Agregar producto"
-                        arrow
-                      >
-                        <AddIcon
-                          color="success"
-                          fontSize="small"
-                          sx={{
-                            cursor: "pointer",
+                            color: "black",
+                            "&:hover": {
+                              color: "red",
+                            },
                           }}
                         />
                       </Tooltip>
