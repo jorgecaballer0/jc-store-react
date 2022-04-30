@@ -131,7 +131,7 @@ export default function Formulario() {
             console.log("Ticket: ", id);
             setCodeId(id);
             // Muestra el boton para obtener el ticket
-            setTimeout(() => setTicket(true), 3500);
+            setTimeout(() => setTicket(true), 1500);
             // Limpio el carrito
             clear();
           });
@@ -139,7 +139,7 @@ export default function Formulario() {
           resetForm();
           // Mensaje "enviado con éxito"
           setSendForm(true);
-          setTimeout(() => setSendForm(false), 3500);
+          setTimeout(() => setSendForm(false), 1500);
         }}
       >
         {({ values, errors, touched, handleChange, handleBlur }) => (
