@@ -1,16 +1,49 @@
 import React, { useContext, useState } from "react";
-import { Button, Card, Container, TextField, Typography } from "@mui/material";
+import {
+  Button,
+  Card,
+  Container,
+  Modal,
+  TextField,
+  Typography,
+} from "@mui/material";
+import Fade from "@mui/material/Fade";
+import Backdrop from "@mui/material/Backdrop";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
 import EmailIcon from "@mui/icons-material/Email";
 import DriveFileRenameOutlineIcon from "@mui/icons-material/DriveFileRenameOutline";
 import { Box } from "@mui/system";
 import { Formik, Form } from "formik";
 import { CartContext } from "../../Context/CartContext";
+import { addDoc, collection, getFirestore } from "firebase/firestore";
 
+// Funciones auxiliares
 const shipping = (qty) => qty * 100;
+// Styles
+const style = {
+  position: "absolute",
+  top: "50%",
+  left: "50%",
+  transform: "translate(-50%, -50%)",
+  width: 600,
+  bgcolor: "white",
+  border: "2px solid #000",
+  boxShadow: 24,
+  p: 4,
+};
 
 export default function Formulario() {
+  // Envia los datos del formulario a firebase
   const [sendForm, setSendForm] = useState(false);
+  // Abre el modal
+  const [open, setOpen] = useState(false);
+  // Muestra el ticket de la compra
+  const [ticket, setTicket] = useState(false);
+
+  const handleOpen = () => setOpen(true);
+  const handleClose = () => setOpen(false);
+
+  // Context
   const { cart, total, clear } = useContext(CartContext);
 
   return (
@@ -68,13 +101,21 @@ export default function Formulario() {
             cart, // Datos del carrito
             total: "$ " + Number(total + shipping(cart.length)), // Total del carrito
           };
-          console.log(buyer);
-          // Limpiar el formulario
+          // Enviar datos a firebase
+          const db = getFirestore();
+          const orderRef = collection(db, "orders");
+          // Agregar documento a la colección
+          addDoc(orderRef, buyer).then(({ id }) => {
+            console.log(id);
+          });
+          // Reinicio el formulario
           resetForm();
-          // Mensaje de enviado con éxito
+          // Mensaje "enviado con éxito"
           setSendForm(true);
-          setTimeout(() => setSendForm(false), 3000);
-          // Limpiar carrito
+          setTimeout(() => setSendForm(false), 3500);
+          // Generar el ticket de compra (modal)
+          setTimeout(() => setTicket(true), 3600);
+          // Limpio el carrito
           clear();
         }}
       >
@@ -166,6 +207,7 @@ export default function Formulario() {
                 >
                   Enviar
                 </Button>
+                {/* CARGANDO DATOS EN FIREBASE */}
                 {sendForm && (
                   <Typography
                     color="green"
@@ -176,10 +218,95 @@ export default function Formulario() {
                       textAlign: "center",
                     }}
                   >
-                    El formulario fue enviado con exito!
+                    Enviando pedido, por favor espere...
                   </Typography>
                 )}
               </Card>
+              {/* MODAL PARA VER EL TICKET CON LOS DATOS*/}
+              {ticket && (
+                <Box
+                  sx={{
+                    mx: "auto",
+                    mt: 2,
+                  }}
+                >
+                  <Button
+                    variant="contained"
+                    color="warning"
+                    size="large"
+                    onClick={handleOpen}
+                  >
+                    Obtener comprobante de la compra
+                  </Button>
+                  <Modal
+                    open={open}
+                    onClose={handleClose}
+                    aria-labelledby="modal-modal-title"
+                    aria-describedby="modal-modal-description"
+                    closeAfterTransition
+                    BackdropComponent={Backdrop}
+                    BackdropProps={{
+                      timeout: 500,
+                    }}
+                  >
+                    <Fade in={open}>
+                      <Box sx={style}>
+                        <Typography
+                          id="modal-title"
+                          variant="h4"
+                          component="h2"
+                          textAlign="center"
+                        >
+                          Ticket de compra
+                        </Typography>
+                        <Typography
+                          id="modal-id"
+                          variant="body1"
+                          component="h2"
+                          textAlign="center"
+                        >
+                          ID de la compra: {"Aca va el id"}
+                        </Typography>
+                        <Typography
+                          textAlign="start"
+                          id="modal-description-name"
+                          sx={{ mt: 2 }}
+                        >
+                          Nombre: {"Va el nombre"}
+                        </Typography>
+                        <Typography
+                          textAlign="start"
+                          id="modal-description-email"
+                          sx={{ mt: 2 }}
+                        >
+                          E-mail: {"va el email"}
+                        </Typography>
+                        <Typography
+                          textAlign="start"
+                          id="modal-description-phone"
+                          sx={{ mt: 2 }}
+                        >
+                          N° de teléfono: {"va el teléfono"}
+                        </Typography>
+                        <Typography
+                          textAlign="start"
+                          id="modal-description-cantidad"
+                          sx={{ mt: 2 }}
+                        >
+                          Cantidad de productos: {"va la cantidad"}
+                        </Typography>
+                        <Typography
+                          textAlign="start"
+                          id="modal-description-total"
+                          sx={{ mt: 2 }}
+                        >
+                          Total: {"va el total"}
+                        </Typography>
+                      </Box>
+                    </Fade>
+                  </Modal>
+                </Box>
+              )}
             </Container>
           </Form>
         )}
