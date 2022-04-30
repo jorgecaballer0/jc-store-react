@@ -198,7 +198,7 @@ export default function Cart() {
               onClick={handleClickOpen}
             >
               <Typography variant="h6" color="white">
-                Confirmar pedido
+                Confirmar compra
               </Typography>
             </Button>
             <Dialog
