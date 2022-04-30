@@ -27,7 +27,6 @@ export default function ItemDetailContainer() {
     <>
       <Container
         className="bodyContainer"
-        maxWidth="xl"
         sx={{
           display: "flex",
           flexWrap: "wrap",
@@ -41,13 +40,18 @@ export default function ItemDetailContainer() {
               sx={{
                 display: "flex",
                 flexDirection: "column",
-                flexWrap: "wrap",
                 alignItems: "center",
                 justifyContent: "center",
               }}
             >
               <CircleLoader size={65} color="white" />
-              <Typography mt={4} gutterBottom variant="h4" color="white">
+              <Typography
+                className="MqText"
+                mt={4}
+                gutterBottom
+                variant="h4"
+                color="white"
+              >
                 CARGANDO DETALLE DEL PRODUCTO...
               </Typography>
             </Box>

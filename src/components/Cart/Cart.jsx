@@ -54,7 +54,7 @@ export default function Cart() {
         <Container className="bodyContainer">
           <Typography
             sx={{
-              my: "1rem",
+              my: "3rem",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
@@ -194,7 +194,7 @@ export default function Cart() {
           >
             <Button
               variant="contained"
-              color="warning"
+              color="success"
               onClick={handleClickOpen}
             >
               <Typography variant="h6" color="white">
@@ -209,12 +209,16 @@ export default function Cart() {
               aria-describedby="alert-dialog-slide-description"
             >
               <DialogTitle>
-                {"Finalizar la compra y continuar con el formulario de envío?"}
+                {"Desea finalizar la compra y completar el formulario de envío?"}
               </DialogTitle>
               <DialogActions>
-                <Button onClick={handleClose}>No, seguir comprando</Button>
+                <Button onClick={handleClose} color="error">
+                  No, seguir comprando
+                </Button>
                 <Link to={"/form"}>
-                  <Button onClick={handleClose}>Continuar</Button>
+                  <Button onClick={handleClose} color="primary">
+                    Continuar
+                  </Button>
                 </Link>
               </DialogActions>
             </Dialog>
@@ -230,7 +234,7 @@ export default function Cart() {
             justifyContent: "center",
           }}
         >
-          <Typography gutterBottom variant="h2" color="white">
+          <Typography className="MqText" gutterBottom variant="h2" color="white">
             No hay productos en el carrito
           </Typography>
           <Link to="/">

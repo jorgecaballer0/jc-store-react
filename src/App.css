@@ -51,7 +51,7 @@ body {
 
 .arrowNext {
   position: absolute;
-  top: 28%;
+  top: 32%;
   right: 30px;
   color: #fff;
   z-index: 15;
@@ -61,7 +61,7 @@ body {
 
 .arrowPrev {
   position: absolute;
-  top: 28%;
+  top: 32%;
   left: 30px;
   color: #fff;
   z-index: 15;
@@ -97,6 +97,15 @@ body {
     justify-content: center;
     margin: 1rem 0;
   }
+
+  .imgCarousel {
+    height: 230px;
+  }
+
+  .arrowNext,
+  .arrowPrev {
+    top: 26%;
+  }
 }
 
 @media screen and (max-width: 576px) {
@@ -111,5 +120,18 @@ body {
     margin-bottom: .5rem;
     padding: .5rem;
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  }
+
+  .imgCarousel {
+    height: 180px;
+  }
+
+  .arrowNext,
+  .arrowPrev {
+    top: 22%;
+  }
+
+  .MqText {
+    font-size: 1.4rem !important;
   }
 }

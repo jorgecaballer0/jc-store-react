@@ -65,7 +65,13 @@ export default function ItemListContainer() {
               }}
             >
               <CircleLoader size={65} color="white" />
-              <Typography mt={4} gutterBottom variant="h4" color="white">
+              <Typography
+                className="MqText"
+                mt={4}
+                gutterBottom
+                variant="h4"
+                color="white"
+              >
                 CARGANDO PRODUCTOS...
               </Typography>
             </Box>
