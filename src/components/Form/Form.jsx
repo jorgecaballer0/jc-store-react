@@ -48,7 +48,7 @@ export default function Formulario() {
   // Muestra el ticket de la compra
   const [ticket, setTicket] = useState(false);
   // Id del ticket
-  const [codeId, setCodeId] = useState("");
+  const [checkOutId, setCheckOutId] = useState("");
   // Copiar al portapapeles
   const [copied, setCopied] = useState(false);
 
@@ -115,28 +115,24 @@ export default function Formulario() {
           return errors;
         }}
         onSubmit={(dataForm, { resetForm }) => {
-          // Setear datos para el envio a firebase
+          // Setear datos para el envio a firebase y mostrar ticket
           let buyer = {
-            dataForm, // Datos del comprador
-            cart, // Datos del carrito
-            total: "$ " + Number(total + shipping(cart.length)), // Total del carrito
-            date: serverTimestamp(), // Fecha de compra
+            dataForm, // Datos del comprador (Nombre, email, teléfono, dirección)
+            cart, // Datos del carrito (productos, cantidad, subtotal)
+            total: "$ " + Number(total + shipping(cart.length)), // Total del carrito (subtotal + envio)
+            date: serverTimestamp(), // Fecha de compra en firebase
           };
           // Enviar datos a firebase
           const db = getFirestore();
           const orderRef = collection(db, "orders");
-          // Agregar documento a la colección
+          // Agregar documento a la colección de ordenes
           addDoc(orderRef, buyer).then(({ id }) => {
-            // Setear id del ticket
-            console.log("Ticket: ", id);
-            setCodeId(id);
-            // Muestra el boton para obtener el ticket
-            setTimeout(() => setTicket(true), 1500);
-            // Limpio el carrito
-            clear();
+            console.log("Ticket: ", id); // Setear id del ticket (consola)
+            setCheckOutId(id); // Estado para mostrar el id de la compra
+            setTimeout(() => setTicket(true), 1500); // Muestra el boton para obtener el ticket
+            clear(); // Limpia el carrito
           });
-          // Reinicio el formulario
-          resetForm();
+          resetForm(); // Reinicio el formulario
           // Mensaje "enviado con éxito"
           setSendForm(true);
           setTimeout(() => setSendForm(false), 1500);
@@ -328,9 +324,9 @@ export default function Formulario() {
                             fontSize: "1.2rem",
                           }}
                         >
-                          {codeId}
+                          {checkOutId}
                           <CopyToClipboard
-                            text={codeId}
+                            text={checkOutId}
                             onCopy={() => setCopied(true)}
                           >
                             <Button
