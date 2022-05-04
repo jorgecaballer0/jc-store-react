@@ -11,14 +11,14 @@ body {
 }
 
 /*////// NAVBAR  //////*/
-.carrito {
+.cart {
   display: flex;
   align-items: center;
   justify-content: center;
   color: #fff;
 }
 
-.carrito:hover {
+.cart:hover {
   cursor: pointer;
   transform: scale(1.2);
   transition: .3s all ease;
@@ -51,7 +51,7 @@ body {
 
 .arrowNext {
   position: absolute;
-  top: 32%;
+  top: 31%;
   right: 30px;
   color: #fff;
   z-index: 15;
@@ -61,7 +61,7 @@ body {
 
 .arrowPrev {
   position: absolute;
-  top: 32%;
+  top: 31%;
   left: 30px;
   color: #fff;
   z-index: 15;

@@ -7,12 +7,11 @@ import { Box } from "@mui/system";
 
 export default function ItemDetail({ card }) {
   const [number, setNumber] = useState(0);
-  const [mostrar, setMostrar] = useState(false);
+  const [show, setShow] = useState(false);
 
-  // Comprar o ir al carrito
   const addCart = (count) => {
     setNumber(count);
-    setMostrar(!mostrar);
+    setShow(!show);
   };
 
   return (
@@ -62,7 +61,6 @@ export default function ItemDetail({ card }) {
               sx={{
                 border: "1px solid #e0e0e0",
                 borderColor: "blue",
-
                 borderRadius: "0.5rem",
                 padding: "0.5rem",
                 textAlign: "center",

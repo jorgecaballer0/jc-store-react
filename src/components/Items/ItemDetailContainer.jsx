@@ -1,10 +1,9 @@
 import React, { useEffect, useState } from "react";
 import ItemDetail from "./ItemDetail";
 import { useParams } from "react-router-dom";
-import { Container, Typography } from "@mui/material";
-import { Box } from "@mui/system";
-import { CircleLoader } from "react-spinners";
+import { Container } from "@mui/material";
 import { doc, getDoc, getFirestore } from "firebase/firestore";
+import DetailLoading from "../Loadings/DetailLoading";
 
 export default function ItemDetailContainer() {
   const [card, setCard] = useState({});
@@ -34,31 +33,7 @@ export default function ItemDetailContainer() {
           alignContent: "center",
         }}
       >
-        {loading === true ? (
-          <>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <CircleLoader size={65} color="white" />
-              <Typography
-                className="MqText"
-                mt={4}
-                gutterBottom
-                variant="h4"
-                color="white"
-              >
-                CARGANDO DETALLE DEL PRODUCTO...
-              </Typography>
-            </Box>
-          </>
-        ) : (
-          <ItemDetail card={card} />
-        )}
+        {loading === true ? <DetailLoading /> : <ItemDetail card={card} />}
       </Container>
     </>
   );

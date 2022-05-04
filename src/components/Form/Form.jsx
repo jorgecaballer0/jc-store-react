@@ -1,12 +1,5 @@
 import React, { useContext, useState } from "react";
-import {
-  Button,
-  Card,
-  Container,
-  Modal,
-  TextField,
-  Typography,
-} from "@mui/material";
+import { Button, Card, Container, Modal, TextField, Typography } from "@mui/material";
 import Fade from "@mui/material/Fade";
 import Backdrop from "@mui/material/Backdrop";
 import PhoneAndroidIcon from "@mui/icons-material/PhoneAndroid";
@@ -18,14 +11,7 @@ import { CopyToClipboard } from "react-copy-to-clipboard";
 import { Box } from "@mui/system";
 import { Formik, Form } from "formik";
 import { CartContext } from "../../Context/CartContext";
-import {
-  addDoc,
-  collection,
-  getFirestore,
-  serverTimestamp,
-} from "firebase/firestore";
-
-const shipping = (qty) => qty * 100;
+import { addDoc, collection, getFirestore, serverTimestamp } from "firebase/firestore";
 
 const style = {
   position: "absolute",
@@ -45,8 +31,7 @@ export default function Formulario() {
   const [ticket, setTicket] = useState(false);
   const [checkOutId, setCheckOutId] = useState("");
   const [copied, setCopied] = useState(false);
-
-  const { cart, total, clear } = useContext(CartContext);
+  const { cart, total, clear, shipping } = useContext(CartContext);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -117,7 +102,6 @@ export default function Formulario() {
             setTimeout(() => setTicket(true), 1500);
             clear();
           });
-
           resetForm();
           setSendForm(true);
           setTimeout(() => setSendForm(false), 1500);

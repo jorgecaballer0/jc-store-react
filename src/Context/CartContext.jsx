@@ -9,22 +9,20 @@ const CartContextProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
 
   useEffect(() => {
+    function calcCart() {
+      setCantTotal(cart.reduce((total, item) => (total += item.count), 0));
+    }
     calcCart();
   }, [cart]);
 
   useEffect(() => {
+    function calcTotal() {
+      setTotal(
+        cart.reduce((total, item) => (total += item.count * item.price), 0)
+      );
+    }
     calcTotal();
   }, [cart]);
-
-  function calcCart() {
-    setCantTotal(cart.reduce((total, item) => (total += item.count), 0));
-  }
-
-  function calcTotal() {
-    setTotal(
-      cart.reduce((total, item) => (total += item.count * item.price), 0)
-    );
-  }
 
   const addToCart = (item) => {
     const indexCart = cart.findIndex((cartItem) => cartItem.id === item.id);
@@ -43,9 +41,19 @@ const CartContextProvider = ({ children }) => {
 
   const clear = () => setCart([]);
 
+  const shipping = (qty) => qty * 100;
+
   return (
     <CartContext.Provider
-      value={{ cart, addToCart, removeFromCart, clear, cantTotal, total }}
+      value={{
+        cart,
+        addToCart,
+        removeFromCart,
+        clear,
+        cantTotal,
+        total,
+        shipping,
+      }}
     >
       {children}
     </CartContext.Provider>

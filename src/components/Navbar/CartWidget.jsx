@@ -11,11 +11,11 @@ export default function CartWidget({ cant }) {
       <IconButton aria-label="cart">
         <Badge badgeContent={cant} color="secondary">
           {cant > 0 ? (
-            <div className="carrito">
+            <div className="cart">
               <ShoppingCartCheckoutIcon fontSize="medium" />
             </div>
           ) : (
-            <div className="carrito">
+            <div className="cart">
               <ShoppingCartRoundedIcon fontSize="medium" />
             </div>
           )}

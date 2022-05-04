@@ -14,7 +14,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { CartContext } from "../../Context/CartContext";
 import Paper from "@mui/material/Paper";
 import { Box } from "@mui/system";
@@ -26,8 +26,6 @@ function priceFormat(num) {
   return `${num.toFixed(2)}`;
 }
 
-const shipping = (qty) => qty * 100;
-
 const priceRow = (qty, price) => qty * price;
 
 const Transition = React.forwardRef(function Transition(props, ref) {
@@ -35,9 +33,8 @@ const Transition = React.forwardRef(function Transition(props, ref) {
 });
 
 export default function Cart() {
-  const { cart, removeFromCart, total } = useContext(CartContext);
-
-  const [open, setOpen] = React.useState(false);
+  const { cart, removeFromCart, total, shipping } = useContext(CartContext);
+  const [open, setOpen] = useState(false);
 
   const handleClickOpen = () => {
     setOpen(true);
@@ -182,9 +179,7 @@ export default function Cart() {
               aria-describedby="alert-dialog-slide-description"
             >
               <DialogTitle>
-                {
-                  "Desea finalizar la compra y completar el formulario de envío?"
-                }
+                {"Desea finalizar la compra y completar el formulario de envío?"}
               </DialogTitle>
               <DialogActions>
                 <Button onClick={handleClose} color="error">
@@ -215,7 +210,7 @@ export default function Cart() {
             variant="h2"
             color="white"
           >
-            No hay productos en el carrito
+            Tu carrito esta vacío!
           </Typography>
           <Link to="/">
             <Button variant="contained" color="primary">

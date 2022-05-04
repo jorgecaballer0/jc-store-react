@@ -48,7 +48,6 @@ export default function StickyFooter() {
             <WhatsAppIcon />
           </ButtonGroup>
         </Container>
-
         <Container className="text-footer">
           <Typography variant="h5" align="center" gutterBottom>
             Sobre Nosotros
@@ -62,7 +61,6 @@ export default function StickyFooter() {
             Nosotros
           </Typography>
         </Container>
-
         <Container className="text-footer">
           <Typography variant="h5" align="center" gutterBottom>
             Preguntas Frecuentes (FAQ)

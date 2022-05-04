@@ -21,8 +21,8 @@ export default function App() {
           <Route exact path="/category/:categoryId" element={<ItemListContainer/>}  />
           <Route exact path="/item/:id" element={<ItemDetailContainer/>}/>
           <Route exact path="/cart" element={<Cart/>}/>
-          <Route exact path="*" element={<Page404/>}/>
           <Route exact path="/form" element={<Form/>}/>
+          <Route exact path="*" element={<Page404/>}/>
         </Routes>
       <Footer/>
     </BrowserRouter>

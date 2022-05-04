@@ -3,7 +3,7 @@ import Button from "@mui/material/Button";
 import { Box, ButtonGroup } from "@mui/material";
 import { CartContext } from "../../Context/CartContext";
 
-export default function ItemCount({ stock, addCart, product, resetCount }) {
+export default function ItemCount({ stock, addCart, product }) {
   const [count, setCount] = useState(0);
   const { addToCart } = useContext(CartContext);
 

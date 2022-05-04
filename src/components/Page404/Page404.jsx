@@ -16,8 +16,30 @@ export default function Page404() {
             justifyContent: "center",
           }}
         >
-          <Typography gutterBottom variant="h2">
-            PAGINA NO ENCONTRADA, POR FAVOR VUELVA A LA PAGINA PRINCIPAL
+          <Typography
+            gutterBottom
+            variant="h2"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "2rem",
+              textAlign: "center",
+            }}
+          >
+            ¡Lo sentimos!
+          </Typography>
+          <Typography
+            gutterBottom
+            variant="h2"
+            sx={{
+              color: "white",
+              fontWeight: "bold",
+              fontSize: "3rem",
+              textAlign: "center",
+            }}
+          >
+            NO ENCONTRAMOS LO QUE BUSCABAS, POR FAVOR VUELVA A LA PAGINA
+            PRINCIPAL
           </Typography>
           <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained" size="large">

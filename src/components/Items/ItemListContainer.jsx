@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
-import { Container, Typography } from "@mui/material";
+import { Container } from "@mui/material";
 import ItemList from "./ItemList";
 import { useParams } from "react-router-dom";
-import { CircleLoader } from "react-spinners";
-import { Box } from "@mui/system";
 import Carousel from "../Carousel/Carousel";
 import { SliderData } from "../../utils/imgCarousel";
 import {
@@ -13,6 +11,7 @@ import {
   query,
   where,
 } from "firebase/firestore";
+import Loading from "../Loadings/Loading";
 
 export default function ItemListContainer() {
   const [items, setItems] = useState([]);
@@ -54,28 +53,7 @@ export default function ItemListContainer() {
         }}
       >
         {loading ? (
-          <>
-            <Box
-              sx={{
-                display: "flex",
-                flexDirection: "column",
-                flexWrap: "wrap",
-                alignItems: "center",
-                justifyContent: "center",
-              }}
-            >
-              <CircleLoader size={65} color="white" />
-              <Typography
-                className="MqText"
-                mt={4}
-                gutterBottom
-                variant="h4"
-                color="white"
-              >
-                CARGANDO PRODUCTOS...
-              </Typography>
-            </Box>
-          </>
+          <Loading />
         ) : (
           <>
             <Carousel slides={SliderData} />
