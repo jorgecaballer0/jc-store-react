@@ -4,18 +4,18 @@
 
 >Demo del proyecto
 
-![GIF](/src/assets/demo-proyecto.gif)
+![GIF](/src/assets/demo-gif.gif)
 
 ## Instalación (local)
 
 ### En el directorio del proyecto, ejecutar en consola:
-##### `Version de NodeJs utilizada: v16.14.1`
+##### `Version de Node: v16.14.1`
 
 
 #### Dependencias necesarias
 ##### `npm install`
 
-#### Correr el proyecto
+#### Iniciar el proyecto
 ##### `npm start`
 
 **Abre [http://localhost:3000](http://localhost:3000) para verlo en el navegador.**
