@@ -4,7 +4,7 @@
 
 >Demo del proyecto
 
-[GIF]()
+[GIF](/src/assets/demo-proyecto.gif)
 
 ## Instalación (local)
 
