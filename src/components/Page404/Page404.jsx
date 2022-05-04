@@ -17,11 +17,11 @@ export default function Page404() {
           }}
         >
           <Typography gutterBottom variant="h2">
-            PAGINA NO ENCONTRADA
+            PAGINA NO ENCONTRADA, POR FAVOR VUELVA A LA PAGINA PRINCIPAL
           </Typography>
           <Link to={"/"} style={{ textDecoration: "none", color: "white" }}>
             <Button variant="contained" size="large">
-              Volver al inicio
+              Volver a la pagina principal
             </Button>
           </Link>
         </Box>

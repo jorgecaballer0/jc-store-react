@@ -26,7 +26,6 @@ const CartContextProvider = ({ children }) => {
     );
   }
 
-  // Añadir al carrito
   const addToCart = (item) => {
     const indexCart = cart.findIndex((cartItem) => cartItem.id === item.id);
     if (indexCart !== -1) {
@@ -38,12 +37,10 @@ const CartContextProvider = ({ children }) => {
     }
   };
 
-  // Eliminar del carrito
   const removeFromCart = (id) => {
     setCart(cart.filter((detail) => detail.id !== id));
   };
 
-  // Limpiar carrito
   const clear = () => setCart([]);
 
   return (

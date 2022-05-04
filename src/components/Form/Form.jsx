@@ -25,9 +25,8 @@ import {
   serverTimestamp,
 } from "firebase/firestore";
 
-// Funcion auxiliar
 const shipping = (qty) => qty * 100;
-// Estilo del modal
+
 const style = {
   position: "absolute",
   top: "50%",
@@ -41,22 +40,16 @@ const style = {
 };
 
 export default function Formulario() {
-  // Envia los datos del formulario a firebase
   const [sendForm, setSendForm] = useState(false);
-  // Abre el modal
   const [open, setOpen] = useState(false);
-  // Muestra el ticket de la compra
   const [ticket, setTicket] = useState(false);
-  // Id del ticket
   const [checkOutId, setCheckOutId] = useState("");
-  // Copiar al portapapeles
   const [copied, setCopied] = useState(false);
+
+  const { cart, total, clear } = useContext(CartContext);
 
   const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
-
-  // Context
-  const { cart, total, clear } = useContext(CartContext);
 
   return (
     <>
@@ -81,13 +74,11 @@ export default function Formulario() {
         }}
         validate={(validation) => {
           let errors = {};
-          // Validacion de Nombre
           if (!validation.name) {
             errors.name = "Por favor ingrese su nombre";
           } else if (!/^[a-zA-ZÀ-ÿ\s]{1,40}$/.test(validation.name)) {
             errors.name = "El nombre solo puede contener letras y espacios";
           }
-          // Validacion de Email
           if (!validation.email) {
             errors.email = "Por favor ingrese su email";
           } else if (
@@ -98,14 +89,12 @@ export default function Formulario() {
             errors.email =
               "El correo solo puede contener letras, numeros, puntos y guiones";
           }
-          // Validacion de Telefono
           if (!validation.phone) {
             errors.phone = "Por favor ingrese su N° de teléfono";
           } else if (!/^[0-9]{10}$/.test(validation.phone)) {
             errors.phone =
               "El teléfono debe contener 10 dígitos, sin espacios ni guiones";
           }
-          // Validacion de Direccion
           if (!validation.address) {
             errors.address = "Por favor ingrese su dirección";
           } else if (!/^[a-zA-Z0-9À-ÿ\s]{1,40}$/.test(validation.address)) {
@@ -115,25 +104,21 @@ export default function Formulario() {
           return errors;
         }}
         onSubmit={(dataForm, { resetForm }) => {
-          // Setear datos para el envio a firebase y mostrar ticket
           let buyer = {
-            dataForm, // Datos del comprador (Nombre, email, teléfono, dirección)
-            cart, // Datos del carrito (productos, cantidad, subtotal)
-            total: "$ " + Number(total + shipping(cart.length)), // Total del carrito (subtotal + envio)
-            date: serverTimestamp(), // Fecha de compra en firebase
+            dataForm,
+            cart,
+            total: "$ " + Number(total + shipping(cart.length)),
+            date: serverTimestamp(),
           };
-          // Enviar datos a firebase
           const db = getFirestore();
           const orderRef = collection(db, "orders");
-          // Agregar documento a la colección de ordenes
           addDoc(orderRef, buyer).then(({ id }) => {
-            console.log("Ticket: ", id); // Setear id del ticket (consola)
-            setCheckOutId(id); // Estado para mostrar el id de la compra
-            setTimeout(() => setTicket(true), 1500); // Muestra el boton para obtener el ticket
-            clear(); // Limpia el carrito
+            setCheckOutId(id);
+            setTimeout(() => setTicket(true), 1500);
+            clear();
           });
-          resetForm(); // Reinicio el formulario
-          // Mensaje "enviado con éxito"
+
+          resetForm();
           setSendForm(true);
           setTimeout(() => setSendForm(false), 1500);
         }}
@@ -246,7 +231,6 @@ export default function Formulario() {
                 >
                   Enviar
                 </Button>
-                {/* TEXTO "CARGANDO DATOS EN FIREBASE" */}
                 {sendForm && (
                   <Typography
                     color="green"
@@ -262,7 +246,6 @@ export default function Formulario() {
                   </Typography>
                 )}
               </Card>
-              {/* MODAL PARA VER EL TICKET CON EL ID*/}
               {ticket && (
                 <Box
                   sx={{

@@ -7,20 +7,17 @@ export default function ItemCount({ stock, addCart, product, resetCount }) {
   const [count, setCount] = useState(0);
   const { addToCart } = useContext(CartContext);
 
-  // Remover unidades del carrito
   function remove() {
     if (count > 0) {
       setCount(count - 1);
     }
   }
-  // Agregar unidades al carrito
   function add() {
     if (count < stock) {
       setCount(count + 1);
     }
   }
 
-  // Agregar producto al carrito
   function handleClickAdd() {
     addToCart({ ...product, count });
     addCart(count);
