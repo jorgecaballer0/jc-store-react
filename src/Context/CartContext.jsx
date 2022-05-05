@@ -1,4 +1,3 @@
-/* eslint-disable react-hooks/exhaustive-deps */
 import React, { createContext, useEffect, useState } from "react";
 
 export const CartContext = createContext();
