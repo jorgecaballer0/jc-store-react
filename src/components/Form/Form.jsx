@@ -79,7 +79,7 @@ export default function Formulario() {
             )
           ) {
             errors.email =
-              "El correo solo puede contener letras, numeros, puntos y guiones";
+              "El correo debe contener @, . y solo letras, números y espacios";
           }
           if (!validation.phone) {
             errors.phone = "Por favor ingrese su N° de teléfono";
