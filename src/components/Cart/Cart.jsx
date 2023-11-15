@@ -179,7 +179,9 @@ export default function Cart() {
               aria-describedby="alert-dialog-slide-description"
             >
               <DialogTitle>
-                {"Desea finalizar la compra y completar el formulario de envío?"}
+                {
+                  "Desea finalizar la compra y completar el formulario de envío?"
+                }
               </DialogTitle>
               <DialogActions>
                 <Button onClick={handleClose} color="error">
